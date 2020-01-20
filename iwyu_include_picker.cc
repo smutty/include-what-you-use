@@ -830,7 +830,8 @@ void MakeNodeTransitive(IncludePicker::IncludeMap* filename_map,
     // in /internal/.  We could CHECK-fail in such a case, but it's
     // probably better to just keep going.
     if (StartsWith(key, "\"third_party/") ||
-        key.find("internal/") != string::npos) {
+        key.find("internal/") != string::npos
+        || key.find("boost/preprocessor") != string::npos) {
       VERRS(4) << "Ignoring a cyclical mapping involving " << key << "\n";
       return;
     }
